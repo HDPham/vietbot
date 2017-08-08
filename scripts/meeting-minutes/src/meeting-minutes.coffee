@@ -12,7 +12,7 @@
 #   <optional notes required for the script>
 #
 # Author:
-#   Todd <toddthetoad95@gmail.com>
+#   Hung Pham
 
 module.exports = (robot) ->
   robot.respond /hello/, (res) ->
