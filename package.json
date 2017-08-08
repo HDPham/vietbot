@@ -1,25 +1,43 @@
 {
-  "name": "vietbot",
+  "name": "testbot",
   "version": "0.0.0",
   "private": true,
   "author": "HPham <tpham40@illinois.edu>",
-  "description": "Beep Boop",
+  "description": "beep boop",
   "dependencies": {
+    "chrono-node": "^1.3.5",
+    "fb": "^1.1.1",
+    "google-auth-library": "^0.9.9",
+    "googleapis": "^14.2.0",
     "hubot": "^2.19.0",
+    "hubot-emergency-compliment": "^1.1.2",
+    "hubot-gif": "0.0.1",
+    "hubot-giphy": "^0.6.1",
     "hubot-diagnostics": "0.0.2",
     "hubot-google-images": "^0.2.7",
     "hubot-google-translate": "^0.2.1",
     "hubot-help": "^0.2.2",
+    "hubot-help-private": "^1.0.0",
     "hubot-heroku-keepalive": "^1.0.3",
     "hubot-maps": "0.0.3",
     "hubot-pugme": "^0.1.1",
     "hubot-redis-brain": "0.0.4",
+    "hubot-remind-her": "^0.4.1",
     "hubot-rules": "^0.1.2",
     "hubot-scripts": "^2.17.2",
     "hubot-shipit": "^0.2.1",
-    "hubot-slack": "^4.3.4"
+    "hubot-slack": "^4.3.4",
+    "hubot-youtube": "^1.0.2",
+    "imgurwrap": "0.0.4",
+    "jimp": "^0.2.24",
+    "lodash": "^4.13.1",
+    "request": "^2.73.0",
+    "slack-api-client": "^0.1.2"
   },
   "engines": {
     "node": "0.10.x"
+  },
+  "devDependencies": {
+    "dotenv": "^4.0.0"
   }
 }
