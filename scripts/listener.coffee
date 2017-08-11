@@ -1,3 +1,9 @@
+# Description:
+#   Fun, interactive hear/respond functions with Hubot.
+#
+# Author:
+#   Hung Pham
+
 module.exports = (robot) ->
     robot.respond /open the (.*) doors/i, (res) ->
         doorType = res.match[1]
