@@ -1,9 +1,9 @@
 {
-  "name": "testbot",
+  "name": "vietbot",
   "version": "0.0.0",
   "private": true,
   "author": "HPham <tpham40@illinois.edu>",
-  "description": "beep boop",
+  "description": "Beep Boop",
   "dependencies": {
     "chrono-node": "^1.3.5",
     "fb": "^1.1.1",
