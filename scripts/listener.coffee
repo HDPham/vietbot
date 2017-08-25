@@ -30,7 +30,7 @@ module.exports = (robot) ->
     robot.respond /what time is it/i, (res) ->
         res.send "It's high noon."
 
-    robot.hear /calendar/i, (res) ->
+    robot.respond /calendar/i, (res) ->
         res.send "Calendar link: https://calendar.google.com/calendar/embed?src=85n5q7ok9hq1sa3hd8o1rs7qd8%40group.calendar.google.com&ctz=America/Chicago"
 
     robot.respond /new event/i, (res) ->
