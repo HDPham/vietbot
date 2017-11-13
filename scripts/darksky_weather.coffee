@@ -9,7 +9,6 @@
 #
 # Commands:
 #   hubot weather <date> - Gives you weather about a specific date
-#   <Month>, <Day> - Tells you information about that day
 #
 # Notes:
 #   Uses Dark Sky
