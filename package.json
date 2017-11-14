@@ -19,7 +19,6 @@
     "hubot-help-private": "^1.0.0",
     "hubot-heroku-keepalive": "^1.0.3",
     "hubot-maps": "0.0.3",
-    "hubot-pugme": "^0.1.1",
     "hubot-redis-brain": "0.0.4",
     "hubot-remind-her": "^0.4.1",
     "hubot-rules": "^0.1.2",

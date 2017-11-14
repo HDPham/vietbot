@@ -36,13 +36,13 @@ module.exports = (robot) ->
     robot.respond /new event/i, (res) ->
         res.send "https://docs.google.com/forms/d/e/1FAIpQLScy68xsuzWPupzBneE6u-hWg5pcyQSzpJfKjgV3mZCd2GVJxQ/viewform"
 
-    robot.receiveMiddleware (context, next, done) ->
-        pugBomb = /pug bomb/i
-        if context.response.message.text?.match(pugBomb)
-            console.log("finish")
-            context.response.message.finish()
-        else
-            next(done)
+    # robot.receiveMiddleware (context, next, done) ->
+    #     pugBomb = /pug bomb/i
+    #     if context.response.message.text?.match(pugBomb)
+    #         console.log("finish")
+    #         context.response.message.finish()
+    #     else
+    #         next(done)
 
     # robot.respond /msggen (.*)/i, (res) ->
     #     robot.messageRoom '#general', res.match[1]
