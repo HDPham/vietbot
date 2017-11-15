@@ -8,7 +8,7 @@
 #   DARKSKY_API_KEY
 #
 # Commands:
-#   hubot weather <date> - Gives you weather about a specific date
+#   hubot weather <date> - Gives you weather about a specific date.
 #
 # Notes:
 #   Uses Dark Sky

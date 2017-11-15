@@ -10,9 +10,9 @@
 #   FB_CLIENT_SECRET
 # 
 # Commands:
-#   <Facebook Event Link> - Gives you information about public facebook events
-#   hubot upcoming events <org> - Lists up to 4 upcoming events for org. Blank defaults to VSA
-#   hubot upcoming events help - Shows upcoming events usage
+#   <Facebook Event Link> - Gives you information about public facebook events.
+#   hubot upcoming events <org> - Lists up to 4 upcoming events for <org>. Defaults to VSA.
+#   hubot upcoming events help - Shows upcoming events usage.
 # 
 # Notes:
 #   Uses Facebook API
