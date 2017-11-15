@@ -21,16 +21,20 @@ fs = require('fs')
 # imgurwrap.setUserAgent('imgurwrap default useragent v1.1'); # Replace with your CleintID
 imgurwrap.setClientID(process.env.IMGUR_CLIENT_ID)
 
+tracer = [
+    '/overwatch_images/tracer_1.jpg'
+    '/overwatch_images/tracer_2.jpg'
+]
 
 module.exports = (robot) ->
-    robot.respond /tracer/i, (msg) ->
-        imagePath = __dirname + '/tracer.jpg'
+    robot.respond /overwatch tracer/i, (msg) ->
+        imagePath = __dirname + '/images/tracer_1.jpg'
         imageData = fs.readFileSync(imagePath)
 
         imgurwrap.uploadImageFile {
         image: imageData
-        title: 'Ever get that feeling of deja vu?'
-        description: 'Dont worry luv, cavalrys here!'
+        title: 'Cheers, love! The cavalry\s here!'
+        description: 'You know, the world could always use more heroes.'
         }, (err, res) ->
             url = 'http://www.imgur.com/' + res.data.id
             # console.log(this);
