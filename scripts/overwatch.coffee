@@ -157,7 +157,6 @@ module.exports = (robot) ->
         return
     return
 
-module.exports = (robot) ->
     robot.respond /overwatch bastion/i, (msg) ->
         imagePath = __dirname + (msg.random bastion)
         imageData = fs.readFileSync(imagePath)
@@ -175,7 +174,6 @@ module.exports = (robot) ->
         return
     return
 
-module.exports = (robot) ->
     robot.respond /overwatch doomfist/i, (msg) ->
         imagePath = __dirname + (msg.random doomfist)
         imageData = fs.readFileSync(imagePath)
@@ -193,7 +191,6 @@ module.exports = (robot) ->
         return
     return
 
-module.exports = (robot) ->
     robot.respond /overwatch dva/i, (msg) ->
         imagePath = __dirname + (msg.random dva)
         imageData = fs.readFileSync(imagePath)
@@ -211,7 +208,6 @@ module.exports = (robot) ->
         return
     return
 
-module.exports = (robot) ->
     robot.respond /overwatch genji/i, (msg) ->
         imagePath = __dirname + (msg.random genji)
         imageData = fs.readFileSync(imagePath)
@@ -229,7 +225,6 @@ module.exports = (robot) ->
         return
     return
 
-module.exports = (robot) ->
     robot.respond /overwatch hanzo/i, (msg) ->
         imagePath = __dirname + (msg.random hanzo)
         imageData = fs.readFileSync(imagePath)
@@ -247,7 +242,6 @@ module.exports = (robot) ->
         return
     return
 
-module.exports = (robot) ->
     robot.respond /overwatch junkrat/i, (msg) ->
         imagePath = __dirname + (msg.random junkrat)
         imageData = fs.readFileSync(imagePath)
@@ -265,7 +259,6 @@ module.exports = (robot) ->
         return
     return
 
-module.exports = (robot) ->
     robot.respond /overwatch lucio/i, (msg) ->
         imagePath = __dirname + (msg.random lucio)
         imageData = fs.readFileSync(imagePath)
@@ -283,7 +276,6 @@ module.exports = (robot) ->
         return
     return
 
-module.exports = (robot) ->
     robot.respond /overwatch mccree/i, (msg) ->
         imagePath = __dirname + (msg.random mccree)
         imageData = fs.readFileSync(imagePath)
@@ -301,7 +293,6 @@ module.exports = (robot) ->
         return
     return
 
-module.exports = (robot) ->
     robot.respond /overwatch mei/i, (msg) ->
         imagePath = __dirname + (msg.random mei)
         imageData = fs.readFileSync(imagePath)
@@ -319,7 +310,6 @@ module.exports = (robot) ->
         return
     return
 
-module.exports = (robot) ->
     robot.respond /overwatch mercy/i, (msg) ->
         imagePath = __dirname + (msg.random mercy)
         imageData = fs.readFileSync(imagePath)
@@ -337,7 +327,6 @@ module.exports = (robot) ->
         return
     return
 
-module.exports = (robot) ->
     robot.respond /overwatch moira/i, (msg) ->
         imagePath = __dirname + (msg.random moira)
         imageData = fs.readFileSync(imagePath)
@@ -355,7 +344,6 @@ module.exports = (robot) ->
         return
     return
 
-module.exports = (robot) ->
     robot.respond /overwatch tracer/i, (msg) ->
         imagePath = __dirname + (msg.random tracer)
         imageData = fs.readFileSync(imagePath)
