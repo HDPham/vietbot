@@ -1,5 +1,5 @@
 # Description:
-#   Sends an image of Tracer from Overwatch
+#   Sends an image of Overwatch Heroes
 #
 # Dependencies:
 #   "imgurwrap": "0.0.4"
@@ -8,7 +8,7 @@
 #   IMGUR_CLIENT_ID
 #
 # Commands:
-#   hubot tracer  - Sends an image of Overwatch Tracer
+#   hubot overwatch <hero>  - Sends an image of Overwatch Tracer
 # 
 # Notes:
 #   Uses Imgur API
@@ -23,14 +23,14 @@ imgurwrap.setClientID(process.env.IMGUR_CLIENT_ID)
 
 
 module.exports = (robot) ->
-    robot.respond /tracer/i, (msg) ->
-        imagePath = __dirname + '/tracer.jpg'
+    robot.respond /overwatch tracer/i, (msg) ->
+        imagePath = __dirname + '/tracer_1.jpg'
         imageData = fs.readFileSync(imagePath)
 
         imgurwrap.uploadImageFile {
         image: imageData
-        title: 'Ever get that feeling of deja vu?'
-        description: 'Dont worry luv, cavalrys here!'
+        title: 'Cheers, love! The cavalry\s here!'
+        description: 'You know, the world could always use more heroes.'
         }, (err, res) ->
             url = 'http://www.imgur.com/' + res.data.id
             # console.log(this);
