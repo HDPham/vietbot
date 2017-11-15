@@ -23,14 +23,14 @@ imgurwrap.setClientID(process.env.IMGUR_CLIENT_ID)
 
 
 module.exports = (robot) ->
-    robot.respond /overwatch tracer/i, (msg) ->
-        imagePath = __dirname + '/tracer_1.jpg'
+    robot.respond /tracer/i, (msg) ->
+        imagePath = __dirname + '/tracer.jpg'
         imageData = fs.readFileSync(imagePath)
 
         imgurwrap.uploadImageFile {
         image: imageData
-        title: 'Cheers, love! The cavalry\s here!'
-        description: 'You know, the world could always use more heroes.'
+        title: 'Ever get that feeling of deja vu?'
+        description: 'Dont worry luv, cavalrys here!'
         }, (err, res) ->
             url = 'http://www.imgur.com/' + res.data.id
             # console.log(this);
