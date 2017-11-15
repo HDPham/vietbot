@@ -8,7 +8,7 @@
 #   IMGUR_CLIENT_ID
 #
 # Commands:
-#   hubot overwatch <hero>  - Sends an image of Overwatch Tracer
+#   hubot overwatch <hero>  - Sends an image of the Overwatch <hero>.
 # 
 # Notes:
 #   Uses Imgur API
@@ -308,6 +308,132 @@ module.exports = (robot) ->
             console.log url
             msg.send url
 
+    robot.respond /overwatch orisa/i, (msg) ->
+        imagePath = __dirname + (msg.random orisa)
+        imageData = fs.readFileSync(imagePath)
+
+        imgurwrap.uploadImageFile {
+        image: imageData
+        title: 'My primary function is to ensure your safety.'
+        description: 'Error 404: Sarcasm module not found.'
+        }, (err, res) ->
+            url = 'http://www.imgur.com/' + res.data.id
+            # console.log(this);
+            console.log url
+            msg.send url
+
+    robot.respond /overwatch pharah/i, (msg) ->
+        imagePath = __dirname + (msg.random pharah)
+        imageData = fs.readFileSync(imagePath)
+
+        imgurwrap.uploadImageFile {
+        image: imageData
+        title: 'I will protect the innocent.'
+        description: 'Sorry, but I need to jet.'
+        }, (err, res) ->
+            url = 'http://www.imgur.com/' + res.data.id
+            # console.log(this);
+            console.log url
+            msg.send url
+
+    robot.respond /overwatch reaper/i, (msg) ->
+        imagePath = __dirname + (msg.random reaper)
+        imageData = fs.readFileSync(imagePath)
+
+        imgurwrap.uploadImageFile {
+        image: imageData
+        title: 'Death walks among you.'
+        description: 'I\'m not a psychopath; I\'m a high-functioning psychopath.'
+        }, (err, res) ->
+            url = 'http://www.imgur.com/' + res.data.id
+            # console.log(this);
+            console.log url
+            msg.send url
+
+    robot.respond /overwatch reinhardt/i, (msg) ->
+        imagePath = __dirname + (msg.random reinhardt)
+        imageData = fs.readFileSync(imagePath)
+
+        imgurwrap.uploadImageFile {
+        image: imageData
+        title: 'Justice will be done.'
+        description: 'Precision German engineering.'
+        }, (err, res) ->
+            url = 'http://www.imgur.com/' + res.data.id
+            # console.log(this);
+            console.log url
+            msg.send url
+
+    robot.respond /overwatch roadhog/i, (msg) ->
+        imagePath = __dirname + (msg.random roadhog)
+        imageData = fs.readFileSync(imagePath)
+
+        imgurwrap.uploadImageFile {
+        image: imageData
+        title: 'I\'m a one-man apocalypse.'
+        description: 'Say "bacon" one more time.'
+        }, (err, res) ->
+            url = 'http://www.imgur.com/' + res.data.id
+            # console.log(this);
+            console.log url
+            msg.send url
+
+    robot.respond /overwatch soldier76/i, (msg) ->
+        imagePath = __dirname + (msg.random soldier76)
+        imageData = fs.readFileSync(imagePath)
+
+        imgurwrap.uploadImageFile {
+        image: imageData
+        title: 'We\'re all soldiers now.'
+        description: 'I\'m the one who does his job. I\'m thinking, you\'re the other one...'
+        }, (err, res) ->
+            url = 'http://www.imgur.com/' + res.data.id
+            # console.log(this);
+            console.log url
+            msg.send url
+
+    robot.respond /overwatch sombra/i, (msg) ->
+        imagePath = __dirname + (msg.random sombra)
+        imageData = fs.readFileSync(imagePath)
+
+        imgurwrap.uploadImageFile {
+        image: imageData
+        title: 'Everything can be hacked... and everyone.'
+        description: 'You\'re just a glitch in the system.'
+        }, (err, res) ->
+            url = 'http://www.imgur.com/' + res.data.id
+            # console.log(this);
+            console.log url
+            msg.send url
+
+    robot.respond /overwatch symmetra/i, (msg) ->
+        imagePath = __dirname + (msg.random symmetra)
+        imageData = fs.readFileSync(imagePath)
+
+        imgurwrap.uploadImageFile {
+        image: imageData
+        title: 'The true enemy of humanity is disorder.'
+        description: 'Such a lack of imagination.'
+        }, (err, res) ->
+            url = 'http://www.imgur.com/' + res.data.id
+            # console.log(this);
+            console.log url
+            msg.send url
+
+    robot.respond /overwatch torbjorn/i, (msg) ->
+        imagePath = __dirname + (msg.random torbjorn)
+        imageData = fs.readFileSync(imagePath)
+
+        imgurwrap.uploadImageFile {
+        image: imageData
+        title: 'Build \'em up, break \'em down.'
+        description: 'For the last time, I\'m Swedish!'
+        }, (err, res) ->
+            url = 'http://www.imgur.com/' + res.data.id
+            # console.log(this);
+            console.log url
+            msg.send url
+
     robot.respond /overwatch tracer/i, (msg) ->
         imagePath = __dirname + (msg.random tracer)
         imageData = fs.readFileSync(imagePath)
@@ -316,6 +442,62 @@ module.exports = (robot) ->
         image: imageData
         title: 'Cheers, love! The cavalry\'s here!'
         description: 'You know, the world could always use more heroes.'
+        }, (err, res) ->
+            url = 'http://www.imgur.com/' + res.data.id
+            # console.log(this);
+            console.log url
+            msg.send url
+
+    robot.respond /overwatch widowmaker/i, (msg) ->
+        imagePath = __dirname + (msg.random widowmaker)
+        imageData = fs.readFileSync(imagePath)
+
+        imgurwrap.uploadImageFile {
+        image: imageData
+        title: 'One shot, one kill.'
+        description: '"Step into my parlor." said the spider to the fly.'
+        }, (err, res) ->
+            url = 'http://www.imgur.com/' + res.data.id
+            # console.log(this);
+            console.log url
+            msg.send url
+
+    robot.respond /overwatch winston/i, (msg) ->
+        imagePath = __dirname + (msg.random winston)
+        imageData = fs.readFileSync(imagePath)
+
+        imgurwrap.uploadImageFile {
+        image: imageData
+        title: 'Imagination is the essence of discovery.'
+        description: 'Houston, uhh, we have a problem.'
+        }, (err, res) ->
+            url = 'http://www.imgur.com/' + res.data.id
+            # console.log(this);
+            console.log url
+            msg.send url
+
+    robot.respond /overwatch zarya/i, (msg) ->
+        imagePath = __dirname + (msg.random winston)
+        imageData = fs.readFileSync(imagePath)
+
+        imgurwrap.uploadImageFile {
+        image: imageData
+        title: 'Together we are strong.'
+        description: 'I want to hug you like big, fuzzy Siberian bear!'
+        }, (err, res) ->
+            url = 'http://www.imgur.com/' + res.data.id
+            # console.log(this);
+            console.log url
+            msg.send url
+
+    robot.respond /overwatch zenyatta/i, (msg) ->
+        imagePath = __dirname + (msg.random zenyatta)
+        imageData = fs.readFileSync(imagePath)
+
+        imgurwrap.uploadImageFile {
+        image: imageData
+        title: 'True self is without form.'
+        description: 'Life is more than a series of ones and zeroes.'
         }, (err, res) ->
             url = 'http://www.imgur.com/' + res.data.id
             # console.log(this);
