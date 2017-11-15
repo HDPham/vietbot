@@ -28,7 +28,7 @@ tracer = [
 
 module.exports = (robot) ->
     robot.respond /overwatch tracer/i, (msg) ->
-        imagePath = __dirname + '/overwatch_images/tracer_1.jpg'
+        imagePath = __dirname + (msg.random tracer)
         imageData = fs.readFileSync(imagePath)
 
         imgurwrap.uploadImageFile {
