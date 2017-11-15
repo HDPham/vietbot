@@ -153,9 +153,6 @@ module.exports = (robot) ->
             # console.log(this);
             console.log url
             msg.send url
-            return            
-        return
-    return
 
     robot.respond /overwatch bastion/i, (msg) ->
         imagePath = __dirname + (msg.random bastion)
@@ -170,9 +167,6 @@ module.exports = (robot) ->
             # console.log(this);
             console.log url
             msg.send url
-            return            
-        return
-    return
 
     robot.respond /overwatch doomfist/i, (msg) ->
         imagePath = __dirname + (msg.random doomfist)
@@ -187,9 +181,6 @@ module.exports = (robot) ->
             # console.log(this);
             console.log url
             msg.send url
-            return            
-        return
-    return
 
     robot.respond /overwatch dva/i, (msg) ->
         imagePath = __dirname + (msg.random dva)
@@ -204,9 +195,6 @@ module.exports = (robot) ->
             # console.log(this);
             console.log url
             msg.send url
-            return            
-        return
-    return
 
     robot.respond /overwatch genji/i, (msg) ->
         imagePath = __dirname + (msg.random genji)
@@ -221,9 +209,6 @@ module.exports = (robot) ->
             # console.log(this);
             console.log url
             msg.send url
-            return            
-        return
-    return
 
     robot.respond /overwatch hanzo/i, (msg) ->
         imagePath = __dirname + (msg.random hanzo)
@@ -238,9 +223,6 @@ module.exports = (robot) ->
             # console.log(this);
             console.log url
             msg.send url
-            return            
-        return
-    return
 
     robot.respond /overwatch junkrat/i, (msg) ->
         imagePath = __dirname + (msg.random junkrat)
@@ -255,9 +237,6 @@ module.exports = (robot) ->
             # console.log(this);
             console.log url
             msg.send url
-            return            
-        return
-    return
 
     robot.respond /overwatch lucio/i, (msg) ->
         imagePath = __dirname + (msg.random lucio)
@@ -272,9 +251,6 @@ module.exports = (robot) ->
             # console.log(this);
             console.log url
             msg.send url
-            return            
-        return
-    return
 
     robot.respond /overwatch mccree/i, (msg) ->
         imagePath = __dirname + (msg.random mccree)
@@ -289,9 +265,6 @@ module.exports = (robot) ->
             # console.log(this);
             console.log url
             msg.send url
-            return            
-        return
-    return
 
     robot.respond /overwatch mei/i, (msg) ->
         imagePath = __dirname + (msg.random mei)
@@ -306,9 +279,6 @@ module.exports = (robot) ->
             # console.log(this);
             console.log url
             msg.send url
-            return            
-        return
-    return
 
     robot.respond /overwatch mercy/i, (msg) ->
         imagePath = __dirname + (msg.random mercy)
@@ -323,9 +293,6 @@ module.exports = (robot) ->
             # console.log(this);
             console.log url
             msg.send url
-            return            
-        return
-    return
 
     robot.respond /overwatch moira/i, (msg) ->
         imagePath = __dirname + (msg.random moira)
@@ -340,9 +307,6 @@ module.exports = (robot) ->
             # console.log(this);
             console.log url
             msg.send url
-            return            
-        return
-    return
 
     robot.respond /overwatch tracer/i, (msg) ->
         imagePath = __dirname + (msg.random tracer)
@@ -357,6 +321,3 @@ module.exports = (robot) ->
             # console.log(this);
             console.log url
             msg.send url
-            return            
-        return
-    return
