@@ -28,12 +28,12 @@ tracer = [
 
 module.exports = (robot) ->
     robot.respond /overwatch tracer/i, (msg) ->
-        imagePath = __dirname + '/tracer_1.jpg'
+        imagePath = __dirname + '/overwatch_images/tracer_1.jpg'
         imageData = fs.readFileSync(imagePath)
 
         imgurwrap.uploadImageFile {
         image: imageData
-        title: 'Cheers, love! The cavalry\s here!'
+        title: 'Cheers, love! The cavalry\'s here!'
         description: 'You know, the world could always use more heroes.'
         }, (err, res) ->
             url = 'http://www.imgur.com/' + res.data.id
