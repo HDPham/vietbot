@@ -14,6 +14,7 @@
     "hubot-emergency-compliment": "^1.1.2",
     "hubot-gif": "0.0.1",
     "hubot-giphy": "^0.6.1",
+    "hubot-google-images": "^0.2.7",
     "hubot-google-translate": "^0.2.1",
     "hubot-help": "^0.2.2",
     "hubot-help-private": "^1.0.0",
