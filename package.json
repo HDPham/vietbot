@@ -10,7 +10,6 @@
     "google-auth-library": "^0.9.9",
     "googleapis": "^14.2.0",
     "hubot": "^2.19.0",
-    "hubot-auth": "^2.1.0",
     "hubot-diagnostics": "0.0.2",
     "hubot-emergency-compliment": "^1.1.2",
     "hubot-env": "0.0.2",

@@ -1,6 +1,5 @@
 [
-  "hubot-auth",
-  "hubot-diagnostics",
+  "hubot-diagnostics"
   "hubot-emergency-compliment",
   "hubot-env",
   "hubot-help",
