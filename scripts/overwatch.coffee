@@ -8,7 +8,7 @@
 #   IMGUR_CLIENT_ID
 #
 # Commands:
-#   hubot overwatch <hero>  - Sends an image of the Overwatch <hero>.
+#   hubot overwatch <hero> - Sends an image of the Overwatch <hero>.
 # 
 # Notes:
 #   Uses Imgur API

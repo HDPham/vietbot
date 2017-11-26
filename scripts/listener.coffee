@@ -1,6 +1,10 @@
 # Description:
 #   Fun, interactive hear/respond functions with Hubot.
 #
+# Board Commands:
+#   hubot calendar - Sends link to event calendar.
+#   hubot new event - Sends link to event form.
+#
 # Author:
 #   Hung Pham
 

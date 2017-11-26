@@ -18,11 +18,15 @@
 chrono = require 'chrono-node'
 
 module.exports = (robot) ->
-    robot.respond /weather ?(.+)?/i, (msg) ->
+    robot.respond /weather(?:\s*$|(?: (.+)))?/i, (msg) ->
         date = msg.match[1]
         unless date
             date = 'today'
+        date = date.replace /^\s+|\s+$/g, ""
         parsed_date = (chrono.parseDate date)
+        unless parsed_date?
+            msg.send "Error: Date is not valid"
+            return
         unixvalue = parsed_date.getTime()/1000
         darkskyuri = 'https://api.darksky.net/forecast/' + process.env.HUBOT_DARK_SKY_API_KEY + '/40.1100,-88.2271,' + unixvalue
         retval = '*Here is the weather for ' + date + ':*\n'
