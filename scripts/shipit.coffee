@@ -14,7 +14,7 @@
 #   ship it - Displays a motivation squirrel.
 #
 # Author:
-#   maddox
+#   Hung Pham
 
 squirrels = [
   "http://shipitsquirrel.github.io/images/ship%20it%20squirrel.png",

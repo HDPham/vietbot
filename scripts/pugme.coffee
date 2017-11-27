@@ -10,6 +10,9 @@
 # Commands:
 #   hubot pug me - Receives a pug.
 #   hubot pug bomb N - Gets N pugs (limited to 3).
+#
+# Author:
+#   Hung Pham
 
 module.exports = (robot) ->
 

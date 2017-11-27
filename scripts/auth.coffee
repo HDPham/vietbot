@@ -5,14 +5,14 @@
 #   HUBOT_AUTH_ADMIN - A comma separate list of user IDs
 #
 # Admin Commands:
-#   hubot <user> has <role> role - Assigns a role to a user
-#   hubot <user> doesn't have <role> role - Removes a role from a user
-#   hubot what roles does <user> have - Find out what roles a user has
-#   hubot what roles do I have - Find out what roles you have
-#   hubot who has <role> role - Find out who has the given role
-#   hubot list assigned roles - List all assigned roles
-#   hubot what is my name - Tells you your name from persistent storage
-#   hubot what is my id - tells you your id from persistent storage
+#   hubot auth <user> add <role> role - Assigns <role> to <user>.
+#   hubot auth <user> remove <role> role - Removes <role> from <user>.
+#   hubot auth <user> id - Gives <user> id from persistent storage.
+#   hubot auth <user> name - Gives <user> name from persistent storage.
+#   hubot auth list <role> assigned users - List users assigned to <role>.
+#   hubot auth list <user> roles - List assigned roles of <user>.
+#   hubot auth list assignments - List names and their assigned roles.
+#   hubot auth list roles - List all assigned roles.
 #
 # Notes:
 #   * Call the method: robot.auth.hasRole(msg.envelope.user,'<role>')
@@ -24,6 +24,9 @@
 #   * The script assumes that user IDs will be unique on the service end as to
 #     correctly identify a user. Names were insecure as a user could impersonate
 #     a user
+#
+# Author:
+#   Hung Pham
 
 config =
   admin_list: process.env.HUBOT_AUTH_ADMIN
@@ -35,6 +38,11 @@ module.exports = (robot) ->
 
   if config.admin_list?
     admins = config.admin_list.split ','
+    for admin_id in admins
+      user = robot.brain.userForId(admin_id)
+      if user?
+        user.roles or= []
+        user.roles.push('admin')
   else
     admins = []
 
@@ -59,8 +67,8 @@ module.exports = (robot) ->
 
     userRoles: (user) ->
       roles = []
-      if user? and robot.auth.isAdmin user
-        roles.push('admin')
+      # if user? and robot.auth.isAdmin user
+      #   roles.push('admin')
       if user.roles?
         roles = roles.concat user.roles
       roles
@@ -68,95 +76,142 @@ module.exports = (robot) ->
   robot.auth = new Auth
 
 
-  robot.respond /@?(.+) ha(?:s|ve) (["'\w: -_]+) role/i, (msg) ->
+  robot.respond /auth @?(.+) add (["'\w: -_]+) role$/i, (msg) ->
     name = msg.match[1].trim()
     if name.toLowerCase() is 'i' then name = msg.message.user.name
     if name.match(/(.*)(?:don['’]t|doesn['’]t|do not|does not)/i) then return
 
     unless name.toLowerCase() in ['', 'who', 'what', 'where', 'when', 'why']
       unless robot.auth.isAdmin msg.message.user
-        msg.reply "Sorry, only admins can assign roles."
+        msg.reply 'Sorry, only admins can assign roles.'
       else
         newRole = msg.match[2].trim().toLowerCase()
 
         user = robot.brain.userForName(name)
-        return msg.reply "#{name} does not exist" unless user?
+        return msg.reply name + ' does not exist' unless user?
         user.roles or= []
 
         if newRole in user.roles
-          msg.reply "#{name} already has the '#{newRole}' role."
+          msg.reply name + ' already has the \'' + newRole + '\' role.'
         else
           if newRole is 'admin'
-            msg.reply "Sorry, the 'admin' role can only be defined in the HUBOT_AUTH_ADMIN env variable."
+            msg.reply 'Sorry, the \'admin\' role can only be defined in the HUBOT_AUTH_ADMIN env variable.'
           else
             myRoles = msg.message.user.roles or []
             user.roles.push(newRole)
-            msg.reply "OK, #{name} has the '#{newRole}' role."
+            msg.reply 'OK, ' + name + ' has the \'' + newRole + '\' role.'
 
-  robot.respond /@?(.+) (?:don['’]t|doesn['’]t|do not|does not) have (["'\w: -_]+) role/i, (msg) ->
+  robot.respond /auth @?(.+) remove (["'\w: -_]+) role$/i, (msg) ->
     name = msg.match[1].trim()
     if name.toLowerCase() is 'i' then name = msg.message.user.name
 
     unless name.toLowerCase() in ['', 'who', 'what', 'where', 'when', 'why']
       unless robot.auth.isAdmin msg.message.user
-        msg.reply "Sorry, only admins can remove roles."
+        msg.reply 'Sorry, only admins can remove roles.'
       else
         newRole = msg.match[2].trim().toLowerCase()
 
         user = robot.brain.userForName(name)
-        return msg.reply "#{name} does not exist" unless user?
+        return msg.reply name + ' does not exist' unless user?
         user.roles or= []
 
         if newRole is 'admin'
-          msg.reply "Sorry, the 'admin' role can only be removed from the HUBOT_AUTH_ADMIN env variable."
+          msg.reply 'Sorry, the \'admin\' role can only be removed from the HUBOT_AUTH_ADMIN env variable.'
         else
           myRoles = msg.message.user.roles or []
           user.roles = (role for role in user.roles when role isnt newRole)
-          msg.reply "OK, #{name} doesn't have the '#{newRole}' role."
+          msg.reply 'OK, ' + name + ' doesn\'t have the \'' + newRole + '\' role.'
 
-  robot.respond /what roles? do(es)? @?(.+) have\?*$/i, (msg) ->
-    name = msg.match[2].trim()
-    if name.toLowerCase() is 'i' then name = msg.message.user.name
+  robot.respond /auth list @?(.+) roles?$/i, (msg) ->
+    role1 = 'admin'
+    role2 = 'board'
+    role3 = 'intern'
+    messanger = robot.brain.userForName(msg.message.user.name)
+    unless messanger?
+      return msg.reply 'You do not exist.'
+    unless robot.auth.hasRole(user, role1) or robot.auth.hasRole(user, role2) or robot.auth.hasRole(user, role3)
+      return msg.reply 'Access Denied.'
+
+    name = msg.match[1].trim()
+    if name.toLowerCase() is 'my' then name = msg.message.user.name
     user = robot.brain.userForName(name)
-    return msg.reply "#{name} does not exist" unless user?
+    return msg.reply name + ' does not exist' unless user?
     userRoles = robot.auth.userRoles(user)
-
     if userRoles.length == 0
-      msg.reply "#{name} has no roles."
+      msg.reply name + ' has no roles.'
     else
-      msg.reply "#{name} has the following roles: #{userRoles.join(', ')}."
+      msg.reply name + ' has the following roles: ' + userRoles.join ', '
 
-  robot.respond /who has (["'\w: -_]+) role\?*$/i, (msg) ->
+  robot.respond /auth list (["'\w: -_]+) assigned users?$/i, (msg) ->
+    role1 = 'admin'
+    role2 = 'board'
+    role3 = 'intern'
+    messanger = robot.brain.userForName(msg.message.user.name)
+    unless messanger?
+      return msg.reply 'You do not exist.'
+    unless robot.auth.hasRole(user, role1) or robot.auth.hasRole(user, role2) or robot.auth.hasRole(user, role3)
+      return msg.reply 'Access Denied.'
+    
     role = msg.match[1]
     userNames = robot.auth.usersWithRole(role) if role?
-
     if userNames.length > 0
-      msg.reply "The following people have the '#{role}' role: #{userNames.join(', ')}"
+      msg.reply 'The following people have the \'' + role +  '\' role: ' + userNames.join ', '
     else
-      msg.reply "There are no people that have the '#{role}' role."
+      msg.reply 'There are no people that have the \'' + role + '\' role.'
 
-  robot.respond /list assigned roles/i, (msg) ->
+  robot.respond /auth list roles?$/i, (msg) ->
+    role1 = 'admin'
+    role2 = 'board'
+    role3 = 'intern'
+    messanger = robot.brain.userForName(msg.message.user.name)
+    unless messanger?
+      return msg.reply 'You do not exist.'
+    unless robot.auth.hasRole(user, role1) or robot.auth.hasRole(user, role2) or robot.auth.hasRole(user, role3)
+      return msg.reply 'Access Denied.'
+    
     roles = []
-    unless robot.auth.isAdmin msg.message.user
-        msg.reply "Sorry, only admins can list assigned roles."
+    for i, user of robot.brain.data.users when user.roles
+      roles.push role for role in user.roles when role not in roles
+    if roles.length > 0
+      msg.reply 'The following roles are available: ' + roles.join ', '
     else
-        for i, user of robot.brain.data.users when user.roles
-            roles.push role for role in user.roles when role not in roles
-        if roles.length > 0
-            msg.reply "The following roles are available: #{roles.join(', ')}"
-        else
-            msg.reply "No roles to list."
+      msg.reply 'No roles to list.'
 
-  robot.respond /what(?:'s|s|\s+is)\s+my\s+name\s*(?:\?|)/i, (msg) ->
-    user = robot.brain.userForId(msg.envelope.user['id'])
+  robot.respond /auth list assignments?$/i, (msg) ->
+    role1 = 'admin'
+    role2 = 'board'
+    role3 = 'intern'
+    messanger = robot.brain.userForName(msg.message.user.name)
+    unless messanger?
+      return msg.reply 'You do not exist.'
+    unless robot.auth.hasRole(user, role1) or robot.auth.hasRole(user, role2) or robot.auth.hasRole(user, role3)
+      return msg.reply 'Access Denied.'
+    
+    retval = '*Here is the list of names and roles*\n'
+    for i, user of robot.brain.data.users when user.roles
+      retval += '>' + user.name + ': ' + user.roles.join(', ') + '\n'
+    msg.reply retval
+  
+  robot.respond /auth @?(.+) name\s*$/i, (msg) ->
+    name = msg.match[1].trim()
+    if name.toLowerCase() is 'my' then name = msg.message.user.name
+    user = robot.brain.userForName(name)
+
+    messanger = robot.brain.userForId(msg.envelope.user['id'])
     unless user and user['name']
-      msg.reply "Your user could not be found in my Brain, sorry!"
-      return
-    msg.reply "Your name is: #{user['name']}."
+      return msg.reply 'Your user could not be found in my Brain, sorry!'
+    unless robot.auth.hasRole(messanger, 'admin')
+      return msg.reply 'Access Denied. You need role \'admin\' to perform this action.'
+    msg.reply name + '\'s name is: ' + user['name'] + '.'
 
-  robot.respond /what(?:'s|s|\s+is)\s+my\s+id\s*(?:\?|)/i, (msg) ->
-    user = robot.brain.userForId(msg.envelope.user['id'])
+  robot.respond /auth @?(.+) id\s*$/i, (msg) ->
+    name = msg.match[1].trim()
+    if name.toLowerCase() is 'my' then name = msg.message.user.name
+    user = robot.brain.userForName(name)
+
+    messanger = robot.brain.userForId(msg.envelope.user['id'])
     unless user and user['id']
-      msg.reply "Your user could not be found in my Brain, sorry!"
-      return
-    msg.reply "Your ID is: #{user['id']}."
+      return msg.reply 'Your user could not be found in my Brain, sorry!'
+    unless robot.auth.hasRole(messanger, 'admin')
+      return msg.reply 'Access Denied. You need role \'admin\' to perform this action.'
+    msg.reply name + '\'s ID is: ' + user['id'] + '.'
