@@ -129,7 +129,7 @@ module.exports = (robot) ->
     messanger = robot.brain.userForName(msg.message.user.name)
     unless messanger?
       return msg.reply 'You do not exist.'
-    unless robot.auth.hasRole(user, role1) or robot.auth.hasRole(user, role2) or robot.auth.hasRole(user, role3)
+    unless robot.auth.hasRole(messanger, role1) or robot.auth.hasRole(messanger, role2) or robot.auth.hasRole(messanger, role3)
       return msg.reply 'Access Denied.'
 
     name = msg.match[1].trim()
@@ -149,7 +149,7 @@ module.exports = (robot) ->
     messanger = robot.brain.userForName(msg.message.user.name)
     unless messanger?
       return msg.reply 'You do not exist.'
-    unless robot.auth.hasRole(user, role1) or robot.auth.hasRole(user, role2) or robot.auth.hasRole(user, role3)
+    unless robot.auth.hasRole(messanger, role1) or robot.auth.hasRole(messanger, role2) or robot.auth.hasRole(messanger, role3)
       return msg.reply 'Access Denied.'
     
     role = msg.match[1]
@@ -166,7 +166,7 @@ module.exports = (robot) ->
     messanger = robot.brain.userForName(msg.message.user.name)
     unless messanger?
       return msg.reply 'You do not exist.'
-    unless robot.auth.hasRole(user, role1) or robot.auth.hasRole(user, role2) or robot.auth.hasRole(user, role3)
+    unless robot.auth.hasRole(messanger, role1) or robot.auth.hasRole(messanger, role2) or robot.auth.hasRole(messanger, role3)
       return msg.reply 'Access Denied.'
     
     roles = []
@@ -184,7 +184,7 @@ module.exports = (robot) ->
     messanger = robot.brain.userForName(msg.message.user.name)
     unless messanger?
       return msg.reply 'You do not exist.'
-    unless robot.auth.hasRole(user, role1) or robot.auth.hasRole(user, role2) or robot.auth.hasRole(user, role3)
+    unless robot.auth.hasRole(messanger, role1) or robot.auth.hasRole(messanger, role2) or robot.auth.hasRole(messanger, role3)
       return msg.reply 'Access Denied.'
     
     retval = '*Here is the list of names and roles*\n'
