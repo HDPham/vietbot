@@ -3,6 +3,7 @@
 #
 # Configuration:
 #   HUBOT_AUTH_ADMIN - A comma separate list of user IDs
+#   HUBOT_AUTH_ROLES - A list of roles with a comma delimited list of user ids
 #
 # Admin Commands:
 #   hubot auth <user> add <role> role - Assigns <role> to <user>.
@@ -18,7 +19,8 @@
 #   * Call the method: robot.auth.hasRole(msg.envelope.user,'<role>')
 #   * returns bool true or false
 #
-#   * the 'admin' role can only be assigned through the environment variable
+#   * the 'admin' role can only be assigned through the environment variable and
+#     it is not persisted
 #   * roles are all transformed to lower case
 #
 #   * The script assumes that user IDs will be unique on the service end as to
