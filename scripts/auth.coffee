@@ -150,7 +150,7 @@ module.exports = (robot) ->
           msg.reply "OK, #{name} doesn't have the '#{newRole}' role."
 
   robot.respond /auth list @?(.+) roles?$/i, (msg) ->
-    name = msg.match[2].trim()
+    name = msg.match[1].trim()
     if name.toLowerCase() is 'i' then name = msg.message.user.name
     user = robot.brain.userForName(name)
     return msg.reply "#{name} does not exist" unless user?
