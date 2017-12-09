@@ -32,18 +32,23 @@ module.exports = (robot) ->
             when 1
                 imagePath = __dirname + '/resources/edgelord.jpg'
                 character = 'AS REAPER'
+                break
             when 2
                 imagePath = __dirname + '/resources/dva.jpg'
                 character = 'AS DVA'
+                break
             when 3
                 imagePath = __dirname + '/resources/genji.jpg'
                 character = 'AS GENJI'
+                break
             when 4
                 imagePath = __dirname + '/resources/mei.jpg'
                 character = 'AS MEI'
+                break
             when 5
                 imagePath = __dirname + '/resources/phara.jpg'
                 character = 'AS PHARA'
+                break
             else
                 imagePath = __dirname + '/resources/edgelord.jpg'
                 character = 'AS REAPER'
@@ -71,19 +76,11 @@ module.exports = (robot) ->
                         image.write tempPath, (err, res) ->
                             imageData = fs.readFileSync(tempPath)
                             imgurwrap.uploadImageFile {
-                            image: imageData
-                            title: 'PLAY OF THE GAME'
-                            description: 'Generated POTG'
+                                image: imageData
+                                title: 'PLAY OF THE GAME'
+                                description: 'Generated POTG'
                             }, (err, res) ->
                                 url = 'http://www.imgur.com/' + res.data.id
                                 # console.log(this);
                                 msg.send url
-                                return
-                            return
-                        return
-                    return
-                return
-            return
             msg.send 'Generating POTG... Be patient, this will take a few seconds!'
-        return
-    return
