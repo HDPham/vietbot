@@ -34,7 +34,7 @@ admin_cmds = [
 ]
 
 board_cmds = [
-    'hubot add <board, interns> - Helps add <board> or <interns> to channel.',
+    'hubot <board, interns> - Helps add <board> or <interns> to channel.',
     'hubot auth list <role> assigned users - List users assigned to <role>.',
     'hubot auth list <user> roles - List assigned roles of <user>. ',
     'hubot auth list assignments - List names and their assigned roles.',

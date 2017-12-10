@@ -2,7 +2,7 @@
 #   Add group to channel.
 #
 # Board Commands:
-#   hubot add <board, interns> - Helps add <board> or <interns> to channel.
+#   hubot <board, interns> - Helps add <board> or <interns> to channel.
 #
 # Author:
 #   Hung Pham
