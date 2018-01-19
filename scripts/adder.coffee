@@ -35,7 +35,7 @@ module.exports = (robot) ->
             return res.reply 'You do not exist.'
         unless robot.auth.hasRole(messenger, role1) or robot.auth.hasRole(messenger, role2)
             return res.reply 'Access Denied. You need role \'' + role1 + '\' or \'' + role2 + '\' to perform this action.'
-        retval = 'Copy and paste the list of board members into your chat and send the message. Then, accept all dialogues (Click "Yes, show chanel history").\n'
+        retval = 'Copy and paste the list of board members into your chat and send the message. Then, accept all dialogues (Click "Yes, show channel history").\n'
         board_ids = process.env.BOARD_IDS.split ','
         board_names = []
         for member_id, i in board_ids
