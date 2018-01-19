@@ -20,7 +20,7 @@ admin_cmds = [
     'hubot auth <user> add <role> role - Assigns <role> to <user>.',
     'hubot auth <user> remove <role> role - Removes <role> from <user>.',
     'hubot auth <user> id - Gives <user> id from persistent storage.',
-    'hubot auth <user> name - Gives <user> name from persistent storage.',
+    # 'hubot auth <user> display name - Gives <user> name from persistent storage.',
     'hubot echo <text> - Reply back with <text>.',
     # 'hubot env current - Displays all current environment variables.',
     # 'hubot env current --prefix=[prefix] - Displays current environment variables with prefix.',

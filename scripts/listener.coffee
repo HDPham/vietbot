@@ -9,12 +9,12 @@
 #   Hung Pham
 
 module.exports = (robot) ->
-    robot.respond /open the (.*) doors/i, (res) ->
+    robot.respond /open the (.+) doors/i, (res) ->
         doorType = res.match[1]
         if doorType is 'pod bay'
           res.reply 'I\'m afraid I can\'t let you do that.'
         else
-          res.reply 'Opening ' + doorType + ' doors'
+          res.reply 'Opening ' + doorType + ' doors.'
 
     robot.hear /^dying|[^a-z]dying/i, (res) ->
         res.send 'Dying? You mean turning up?'
@@ -25,14 +25,15 @@ module.exports = (robot) ->
     robot.hear /\(y\)/i, (res) ->
         res.send '👍'
 
-    robot.respond /i love you/i, (res) ->
-    	res.send 'I love Emilia'
+    robot.hear /i love .+/i, (res) ->
+    	res.send 'I love Emilia.'
 
-    robot.respond /hold the door/i, (res) ->
+    robot.hear /hold the door/i, (res) ->
         res.send 'hodor.'
 
-    robot.respond /what time is it/i, (res) ->
-        res.send 'It\'s high noon.'
+    robot.hear /call me (.+)/i, (res) ->
+        nickname = res.match[1]
+        res.send 'Yes, ' + nickname + '.'
 
     robot.respond /calendar/i, (res) ->
         role1 = 'board'

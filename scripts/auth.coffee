@@ -9,7 +9,6 @@
 #   hubot auth <user> add <role> role - Assigns <role> to <user>.
 #   hubot auth <user> remove <role> role - Removes <role> from <user>.
 #   hubot auth <user> id - Gives <user> id from persistent storage.
-#   hubot auth <user> name - Gives <user> name from persistent storage.
 #   hubot auth list <role> assigned users - List users assigned to <role>.
 #   hubot auth list <user> roles - List assigned roles of <user>.
 #   hubot auth list assignments - List names and their assigned roles.
@@ -202,20 +201,20 @@ module.exports = (robot) ->
     
     retval = '\n'
     for i, user of robot.brain.data.users when user.roles
-      retval += '>*' + user.name + '*: ' + user.roles.join(', ') + '\n'
+      retval += '>*' + user.real_name + '*: ' + user.roles.join(', ') + '\n'
     msg.reply retval
   
-  robot.respond /auth @?(.+) name\s*$/i, (msg) ->
-    name = msg.match[1].trim()
-    if name.toLowerCase() is 'my' then name = msg.message.user.name
-    user = robot.brain.userForName(name)
+  # robot.respond /auth @?(.+) display name\s*$/i, (msg) ->
+  #   name = msg.match[1].trim()
+  #   if name.toLowerCase() is 'my' then name = msg.message.user.name
+  #   user = robot.brain.userForName(name)
 
-    messanger = robot.brain.userForId(msg.envelope.user['id'])
-    unless user and user['name']
-      return msg.reply 'Your user could not be found in my Brain, sorry!'
-    unless robot.auth.hasRole(messanger, 'admin')
-      return msg.reply 'Access Denied. You need role \'admin\' to perform this action.'
-    msg.reply name + '\'s name is: ' + user['name'] + '.'
+  #   messanger = robot.brain.userForId(msg.envelope.user.id)
+  #   unless user and user.name
+  #     return msg.reply 'Your user could not be found in my Brain, sorry!'
+  #   unless robot.auth.hasRole(messanger, 'admin')
+  #     return msg.reply 'Access Denied. You need role \'admin\' to perform this action.'
+  #   msg.reply user.real_name + '\'s display name is: ' + user.name + '.'
 
   robot.respond /auth @?(.+) id\s*$/i, (msg) ->
     name = msg.match[1].trim()
@@ -223,8 +222,8 @@ module.exports = (robot) ->
     user = robot.brain.userForName(name)
 
     messanger = robot.brain.userForId(msg.envelope.user['id'])
-    unless user and user['id']
+    unless user and user.id
       return msg.reply 'Your user could not be found in my Brain, sorry!'
     unless robot.auth.hasRole(messanger, 'admin')
       return msg.reply 'Access Denied. You need role \'admin\' to perform this action.'
-    msg.reply name + '\'s ID is: ' + user['id'] + '.'
+    msg.reply name + '\'s ID is: ' + user.id + '.'
