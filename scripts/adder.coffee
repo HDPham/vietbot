@@ -9,7 +9,7 @@
 
 
 module.exports = (robot) ->
-    robot.respond /intern\s*?$/i, (res) ->
+    robot.respond /interns?\s*?$/i, (res) ->
         role1 = 'board'
         role2 = 'intern'
         messenger = robot.brain.userForName(res.message.user.name)

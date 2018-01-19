@@ -6,8 +6,8 @@
 #   hubot admin help <query> - Displays all admin help commands that match <query>.
 #
 # Board Commands:
-#   hubot board help - Displays all of the board help commands that this bot knows about.
-#   hubot board help <query> - Displays all board help commands that match <query>.
+#   hubot <board, intern> - Displays all of the board help commands that this bot knows about.
+#   hubot <board, intern> help <query> - Displays all board help commands that match <query>.
 #
 # Author:
 #   Hung Pham
@@ -35,12 +35,12 @@ admin_cmds = [
 
 board_cmds = [
     'hubot <board, interns> - Helps add <board> or <interns> to channel.',
+    'hubot <board, intern> help - Displays all of the admin help commands that this bot knows about.',
+    'hubot <board, intern> help <query> - Displays all admin help commands that match <query>.',
     'hubot auth list <role> assigned users - List users assigned to <role>.',
     'hubot auth list <user> roles - List assigned roles of <user>. ',
     'hubot auth list assignments - List names and their assigned roles.',
     'hubot auth list roles - List all assigned roles.',
-    'hubot board help - Displays all of the admin help commands that this bot knows about.',
-    'hubot board help <query> - Displays all admin help commands that match <query>.',
     'hubot calendar - Sends link to event calendar.',
     'hubot new event - Sends link to event form.'
 ]
@@ -67,7 +67,7 @@ module.exports = (robot) ->
         retval = admin_cmds.join '\n'
         res.send retval
 
-    robot.respond /board help(?:\s*$|(?: (.+)))?/i, (res) ->
+    robot.respond /(?:board|intern) help(?:\s*$|(?: (.+)))?/i, (res) ->
         role1 = 'board'
         role2 = 'intern'
         user = robot.brain.userForName(res.message.user.name)
